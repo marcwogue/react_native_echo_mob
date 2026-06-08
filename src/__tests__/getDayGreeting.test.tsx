@@ -1,4 +1,30 @@
-import { expect, test } from '@jest/globals';
+/**
+ * @jest-environment node
+ */
+import { expect, test, jest } from '@jest/globals';
+
+// Mock the TurboModule so TurboModuleRegistry.getEnforcing doesn't throw
+// when running in a Node environment without a native binary.
+jest.mock('../NativeEchoMob', () => ({
+  __esModule: true,
+  default: {
+    multiply: (a: number, b: number) => a * b,
+    getDayGreeting: (n: number) => {
+      const days = [
+        'dimanche',
+        'lundi',
+        'mardi',
+        'mercredi',
+        'jeudi',
+        'vendredi',
+        'samedi',
+      ];
+      const index = (((n % 7) as number) + 7) % 7;
+      return `bonjour ${days[index]}`;
+    },
+  },
+}));
+
 import { getDayGreeting } from '../getDayGreeting';
 
 test('returns correct day greeting', () => {
