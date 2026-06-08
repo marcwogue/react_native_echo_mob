@@ -9,10 +9,10 @@ import java.util.HashMap
 
 class EchoMobPackage : BaseReactPackage() {
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name == EchoMobModule.NAME) {
-      EchoMobModule(reactContext)
-    } else {
-      null
+    return when (name) {
+      EchoMobModule.NAME -> EchoMobModule(reactContext)
+      WifiModule.NAME    -> WifiModule(reactContext)
+      else               -> null
     }
   }
 

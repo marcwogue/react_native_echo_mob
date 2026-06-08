@@ -1,2 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <!-- Wi-Fi state read/write -->
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+  <!-- Location is required for Wi-Fi scanning on Android 6+ -->
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+  <!-- Network state (needed for ConnectivityManager on API 29+) -->
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
 </manifest>
