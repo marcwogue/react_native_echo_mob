@@ -56,6 +56,13 @@ android {
     disable "GradleCompatible"
   }
 
+  testOptions {
+    unitTests {
+      includeAndroidResources = true
+      returnDefaultValues   = true
+    }
+  }
+
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
@@ -64,4 +71,13 @@ android {
 
 dependencies {
   implementation "com.facebook.react:react-android"
+
+  // ─── Unit test dependencies ───────────────────────────────────────────────
+  testImplementation "junit:junit:4.13.2"
+  testImplementation "org.mockito:mockito-core:5.11.0"
+  testImplementation "org.mockito:mockito-inline:5.2.0"       // mock final classes
+  testImplementation "org.robolectric:robolectric:4.13"        // Android SDK emulation on JVM
+  testImplementation "androidx.test:core:1.6.1"
+  testImplementation "androidx.test:runner:1.6.2"
+  testImplementation "org.jetbrains.kotlin:kotlin-test-junit:2.0.21"
 }
