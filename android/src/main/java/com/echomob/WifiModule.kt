@@ -96,7 +96,7 @@ class WifiModule(private val reactContext: ReactApplicationContext) :
       return
     }
 
-    val activity = getCurrentActivity() ?: reactContext.currentActivity
+    val activity = reactContext.currentActivity
     if (activity == null) {
       promise.reject(WifiError.PERMISSION_DENIED.code, "No active Activity to request permissions from.")
       return
@@ -158,7 +158,7 @@ class WifiModule(private val reactContext: ReactApplicationContext) :
       return
     }
 
-    val activity = getCurrentActivity() ?: reactContext.currentActivity
+    val activity = reactContext.currentActivity
     if (activity == null) {
       promise.reject(WifiError.PERMISSION_DENIED.code, "No active Activity to request permissions from.")
       return
